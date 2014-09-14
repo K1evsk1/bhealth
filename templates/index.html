@@ -6,14 +6,100 @@
     <title>BHealth</title>
     <link rel="stylesheet" href="/static/css/foundation.css"/>
 	<link rel="stylesheet" href="/static/css/normalize.css">
-	
+  	<link rel="stylesheet" href="/static/css/foundation-icons.css">
+      <link rel="stylesheet" href="/static/scss/_settings.scss" />
+
     <script src="/static/js/vendor/modernizr.js"></script>
   </head>
   <body>
- <div class="large-10 large-offset-1 columns">
- <div class="off-canvas-wrap" data-offcanvas> <div class="inner-wrap"> <a class="left-off-canvas-toggle" href="#" >Menu</a> <!-- Off Canvas Menu --> <aside class="left-off-canvas-menu"> <!-- whatever you want goes here --> <ul> <li><a href="#">Item 1</a></li> ... </ul> </aside> <!-- main content goes here --> <p>Set in the year 0 F.E. ("Foundation Era"), The Psychohistorians opens on Trantor, the capital of the 12,000-year-old Galactic Empire. Though the empire appears stable and powerful, it is slowly decaying in ways that parallel the decline of the Western Roman Empire. Hari Seldon, a mathematician and psychologist, has developed psychohistory, a new field of science and psychology that equates all possibilities in large societies to mathematics, allowing for the prediction of future events.</p> <!-- close the off-canvas menu --> <a class="exit-off-canvas"></a> </div> </div>
- </div>
+      <div class="large-8 large-offset-2 columns">
+        <nav class="top-bar" data-topbar role="navigation">
+            <ul class="title-area">
+                <li class="name">
+                    <h1><a href="#">BHealth</a></h1>
+                </li> <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+                <li class="toggle-topbar menu-icon">
+                    <a href="#"><span>Menu</span></a>
+                </li>
+            </ul>
+            <section class="top-bar-section"> <!-- Right Nav Section -->
+                <ul class="right">
+                    <li class="active">
+                        <a href="#">Регистрация</a>
+                    </li>
+                    <li class="has-dropdown">
+                        <a href="#">Вход</a>
+                        <ul class="dropdown">
+                            <li>
+                                <a href="#">First link in dropdown</a>
+                            </li>
+                            <li class="active">
+                                <a href="#">Active link in dropdown</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul> <!-- Left Nav Section -->
+            </section>
+        </nav>
+        </div>
+    <div class="large-8 large-offset-2 columns">
+    <hr />
+    </div>
+    <div class="large-8 large-offset-2 columns">
+        <h3>Проект BHealth создан помочь людям стать здоровее</h3>
 
+
+        <div>
+            <div class="large-5">
+            <form>
+                <fieldset>
+                    <legend>
+                        <dl class="tabs" data-tab>
+                            <dd class="active"><a href="#panel1" style="background-color: #008cba;">Мужчина</a></dd>
+                            <dd><a href="#panel2">Женщина</a></dd>
+                        </dl>
+                    </legend>
+                    <div class="tabs-content">
+                        <div class="content active" id="panel1">
+
+                            <label>Weight <input type="number" placeholder="Inputs and other form elements go inside..."> </label>
+                            <label>Height <input type="text" placeholder="Inputs and other form elements go inside..."> </label>
+                            <label>Date_of_birth <input type="text" placeholder="Inputs and other form elements go inside..."> </label>
+                            <label>Activity_choices <input type="text" placeholder="Inputs and other form elements go inside..."> </label>
+                            <label>Goal_choices <input type="text" placeholder="Inputs and other form elements go inside..."> </label>
+                        </div>
+                        <div class="content" id="panel2">
+                            <label>Input Label <input type="text" placeholder="Inputs and other form elements go inside..."> </label>
+                            <label>Input Label <input type="text" placeholder="Inputs and other form elements go inside..."> </label>
+                            <label>Input Label <input type="text" placeholder="Inputs and other form elements go inside..."> </label>
+                            <label>Input Label <input type="text" placeholder="Inputs and other form elements go inside..."> </label>
+                            <label>Input Label <input type="text" placeholder="Inputs and other form elements go inside..."> </label>
+  </div>
+                        </div>
+
+
+                    <div class="icon-bar three-up">
+                        <a class="item">
+                            <i class="fi-social-google-plus"></i>
+                        </a>
+                        <a class="item">
+                            <i class="fi-social-facebook"></i>
+                        </a>
+                        <a class="item">
+                            <i class="fi-social-twitter"></i>
+                        </a> </div>
+                </fieldset>
+
+            </form>
+
+                </div>
+
+        </div>
+
+
+
+
+    </div>
     <script src="/static/js/vendor/jquery.js"></script>
     <script src="/static/js/foundation.min.js"></script>
     <script>
