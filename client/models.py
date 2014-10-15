@@ -26,3 +26,7 @@ class Client(models.Model):
     count_training_to_week = models.IntegerField()
     count_minute_to_training = models.IntegerField()
     goal = models.IntegerField(choices=goal_choices)
+
+class ClientCalendar(models.Model):
+    client_id = models.ForeignKey(Client)
+    date = models.DateField()

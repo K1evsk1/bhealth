@@ -1,35 +1,30 @@
 from django.db import models
+from client.models import ClientCalendar
 
+class FoodCalendar(models.Model):
+    food_time_choices = (
+        (1, 'breakfast'),
+        (2, 'lunch'),
+        (3, 'dinner'),
+        (4, 'supper'),
+    )
+    calendar_id = models.ForeignKey(ClientCalendar)
+    food_id = models.ForeignKey(Food)
+    weight = models.DecimalField()
+    food_time = models.IntegerField(choices=food_time_choices)
+
+class Food(models.Model):
+    name = models.CharField(max_length=200)
+    preparing_method = models.TextField()
 
 class Product(models.Model):
-    product_name = models.CharField(max_length=100)
-    calories = models.FloatField(verbose_name='Калории')
-    protein = models.FloatField(verbose_name='Белки')
-    fat = models.FloatField(verbose_name='Жиры')
-    carbs = models.FloatField(verbose_name='Углеводы')
+    name = models.CharField(max_length=200)
+    kkal = models.DecimalField()
+    b = models.DecimalField()
+    j = models.DecimalField()
+    u = models.DecimalField()
 
-    def __str__(self):
-        return self.product_name
-
-    class Meta:
-        verbose_name_plural = 'Продукты'
-
-
-class Dish(models.Model):
-    product = models.ManyToManyField(Product, through='DishToProduct')
-    dish_name = models.CharField(max_length=100, verbose_name='Наименование блюда')
-
-    def __str__(self):
-        return self.dish_name
-
-    class Meta:
-        verbose_name_plural = 'Блюда'
-
-
-class DishToProduct(models.Model):
-    dish = models.ForeignKey(Dish, verbose_name='Блюдо')
-    product = models.ForeignKey(Product, verbose_name='Продукт')
-    weight = models.IntegerField(verbose_name='Вес продукта в блюде')
-
-    def __str__(self):
-        return self.dish.dish_name
+class FoodToProduct(models.Model):
+    food_id = models.ForeignKey(Food)
+    product_id = models.ForeignKey(Product)
+    product_weight = models.IntegerField()
