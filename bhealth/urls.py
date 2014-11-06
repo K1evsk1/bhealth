@@ -1,14 +1,20 @@
 from django.conf.urls import patterns, include, url
-from bhealth.views import index
-
 from django.contrib import admin
 admin.autodiscover()
 
-urlpatterns = patterns('',
-    # Examples:
-    # url(r'^$', 'bhealth.views.home', name='home'),
-    # url(r'^blog/', include('blog.urls')),
 
+urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^', index, name='index')
+    url(r'^profile/', include('client.urls', namespace='client')),
+    url(r'^product/', include('product.urls', namespace='product'))
+)
+
+#authentification
+urlpatterns += patterns('',
+    url(r'^', include('bhealth_auth.urls', namespace='bhealth_auth'))
+)
+
+#social_authentification
+urlpatterns += patterns('',
+    url(r'', include('social.apps.django_app.urls', namespace='social'))
 )

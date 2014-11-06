@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 """
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-import os
+import os, random
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 
@@ -36,7 +36,12 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'social.apps.django_app.default',
+    'bhealth_auth',
+    'bhealth_auth.templatetags',
+    'client',
     'product',
+    'training',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -88,8 +93,48 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images')
 
 MEDIA_URL = 'http://127.0.0.1:8000/static/images/'
 
-LOGIN_URL = '/accounts/login/'
+LOGIN_URL = '/'
+
+LOGIN_REDIRECT_URL = '/'
 
 TEMPLATE_DIRS = (
     os.path.join(BASE_DIR,  'templates'),
 )
+
+
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.contrib.auth.context_processors.auth',
+    'django.core.context_processors.request',
+    'social.apps.django_app.context_processors.backends',
+)
+
+AUTHENTICATION_BACKENDS = (
+    'social.backends.google.GoogleOAuth2',
+    'social.backends.vk.VKOAuth2',
+    'social.backends.facebook.FacebookOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
+)
+
+SOCIAL_AUTH_STRATEGY = 'social.strategies.django_strategy.DjangoStrategy'
+SOCIAL_AUTH_STORAGE = 'social.apps.django_app.default.models.DjangoStorage'
+
+SOCIAL_AUTH_PIPELINE = (
+    'social.pipeline.social_auth.social_details',
+    'social.pipeline.social_auth.social_uid',
+    'social.pipeline.social_auth.auth_allowed',
+    'social.pipeline.social_auth.social_user',
+    'social.pipeline.user.get_username',
+    'social.pipeline.mail.mail_validation',
+    'bhealth_auth.pipeline.create_social_user',
+    'social.pipeline.social_auth.associate_user',
+    'social.pipeline.debug.debug',
+    'social.pipeline.social_auth.load_extra_data',
+    'social.pipeline.user.user_details',
+    #'social.pipeline.debug.debug'
+)
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '112229862305-iu44jjrjeuhcgurks2ibp6c373gaemi4.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'esxC1eGLY-9TmKbi8G-5GsaD'
+
+SOCIAL_AUTH_VK_OAUTH2_KEY = '4620943'
+SOCIAL_AUTH_VK_OAUTH2_SECRET = 'OSiygmarfqJz0bVHIkyu'
